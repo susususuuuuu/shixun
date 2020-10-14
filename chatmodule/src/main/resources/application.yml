@@ -1,0 +1,27 @@
+server:
+  port: 8777
+  servlet:
+    context-path: /group
+
+spring:
+  datasource:
+    url: jdbc:mysql://cdb-b6fcgmw2.cd.tencentcdb.com:10053/TOFEL?serverTimezone=UTC&characterEncoding=utf-8
+    hikari:
+      username: groupsix
+      password: chinasoft6
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      max-lifetime: 30000
+  application:
+    name: group
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+mybatis:
+  mapper-locations: classpath:chatmodule/mapper/*.xml
+  type-aliases-package: chatmodule.bean
+
+feign:
+  httpclient:
+    enabled: true

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.user.mapper.UserMapper">
+    <!--查询用户 -->
+    <select resultType="User" id="getUserByUsername" parameterType="string">
+		select * from user where usr_username = #{usr_username}
+	</select>
+
+
+    <!--修改用户信息-->
+    <update id="updateUser" parameterType="map">
+        update user set
+        usr_nickname = #{usr_nickname},
+        usr_gender = #{usr_gender},
+        usr_email = #{usr_email},
+        usr_birthday = #{usr_birthday},
+        usr_gender = #{usr_gender},
+        usr_sign = #{usr_sign},
+        usr_phone = #{usr_phone}
+        where usr_username = #{usr_username}
+    </update>
+
+    <!--修改用户密码-->
+    <update id="updatePwd" >
+        update user set usr_password = #{pwd} where usr_username = #{usr_username}
+    </update>
+
+    <!--获取用户头像地址-->
+    <select id="getPhoto"  resultType="string" parameterType="string" >
+        select usr_portrait from user where usr_username = #{usr_username}
+    </select>
+
+    <!--修改用户头像-->
+    <update id="updatePhoto" >
+        update user set usr_portrait = #{usr_portrait} where usr_username = #{usr_username}
+    </update>
+</mapper>
